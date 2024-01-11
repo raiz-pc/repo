@@ -52,6 +52,12 @@
         "tilemapTile": true,
         "displayName": "myTile2"
     },
+    "tile9": {
+        "data": "hwQQABAAAAC7u7u7u7u7u7u7u/qv//r6u7u7+s//+vq7u7v6z6r8/Lu7u/rPr8/6u7u7+s+v/6q7u7uqqq//+ru7u/qvr//8u7u7+q+v//y7u7v6r6+q+ru7u/rPqv/6u7u7+v/8+qq7u7v8//qv/Lu7u/z/+vz6u7u7zKr6+vq7u7u7u7u7uw==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "obstacle-wall"
+    },
     "level1": {
         "id": "level1",
         "mimeType": "application/mkcd-tilemap",
