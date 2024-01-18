@@ -1,3 +1,21 @@
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    for (let index = 0; index < 1; index++) {
+        animation.runImageAnimation(
+        mySprite,
+        [img`
+            2 2 2 . 1 1 1 . . . . . 
+            . 2 2 2 2 2 2 2 2 2 2 . 
+            c f f 2 2 2 2 2 f f 2 2 
+            c f f c c c c c f f c c 
+            c c c c c c c c c c c c 
+            . . . . . . . . . . . . 
+            `],
+        500,
+        false
+        )
+    }
+})
+let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -121,7 +139,7 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
 tiles.setCurrentTilemap(tilemap`level1`)
-let mySprite = sprites.create(img`
+mySprite = sprites.create(img`
     2 2 2 . 1 1 1 . . . . . 
     . 2 2 2 2 2 2 2 2 2 2 . 
     c f f 2 2 2 2 2 f f 2 2 
