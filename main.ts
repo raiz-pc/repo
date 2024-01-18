@@ -1,18 +1,3 @@
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    mySprite,
-    [img`
-        . . . . . . . . . . . . 
-        . . f f 1 1 1 f f . . . 
-        . . . 2 2 2 2 2 . . . . 
-        . c 2 2 2 2 2 2 2 c . . 
-        . c f f 2 2 2 f f c . . 
-        . c f f c c c f f c . . 
-        `],
-    100,
-    false
-    )
-})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
@@ -58,6 +43,45 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mySprite,
+    [img`
+        . . . . . . . . . . . . 
+        . . f f 1 1 1 f f . . . 
+        . . . 2 2 2 2 2 . . . . 
+        . c 2 2 2 2 2 2 2 c . . 
+        . c f f 2 2 2 f f c . . 
+        . c f f c c c f f c . . 
+        `],
+    100,
+    false
+    )
+})
+function change_Level (Level_Number: number) {
+    if (Level_Number == 1) {
+        tiles.setCurrentTilemap(tilemap`starfin`)
+    } else if (Level_Number == 2) {
+        tiles.setCurrentTilemap(tilemap`level2`)
+    }
+}
+function PlaceObstacles (row: number, column: number) {
+    for (let index2 = 0; index2 <= column; index2++) {
+        for (let index = 0; index <= row; index++) {
+            if (Math.percentChance(5)) {
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index), assets.tile`FINISHLIEN`) || tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index), assets.tile`myTile4`)) {
+                	
+                } else {
+                    if (Math.percentChance(50)) {
+                        tiles.setTileAt(tiles.getTileLocation(index2, index), sprites.builtin.forestTiles0)
+                    } else {
+                        tiles.setTileAt(tiles.getTileLocation(index2, index), assets.tile`obstacle-wall`)
+                    }
+                }
+            }
+        }
+    }
+}
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -193,6 +217,8 @@ mySprite = sprites.create(img`
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
 let levels = [tileUtil.createSmallMap(tilemap`starfin`), 1]
+let CurrentLevel = 0
+PlaceObstacles(100, 100)
 forever(function () {
     let level1: tiles.TileMapData = null
     let tilemap2: tiles.TileMapData = null
