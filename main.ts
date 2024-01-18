@@ -181,7 +181,7 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
-tiles.setCurrentTilemap(tilemap`level1`)
+tiles.setCurrentTilemap(tilemap`starfin`)
 mySprite = sprites.create(img`
     2 2 2 . 1 1 1 . . . . . 
     . 2 2 2 2 2 2 2 2 2 2 . 
@@ -192,3 +192,9 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
+let levels = [tileUtil.createSmallMap(tilemap`starfin`), 1]
+forever(function () {
+    let level1: tiles.TileMapData = null
+    let tilemap2: tiles.TileMapData = null
+    tileUtil.connectMaps(tilemap2, level1, MapConnectionKind.Door1)
+})
