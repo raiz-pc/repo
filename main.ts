@@ -73,7 +73,7 @@ function PlaceObstacles (row: number, column: number) {
                 	
                 } else {
                     if (Math.percentChance(50)) {
-                        tiles.setTileAt(tiles.getTileLocation(index2, index), sprites.builtin.forestTiles0)
+                        tiles.setTileAt(tiles.getTileLocation(index2, index), assets.tile`myTileperson`)
                     } else {
                         tiles.setTileAt(tiles.getTileLocation(index2, index), assets.tile`obstacle-wall`)
                     }
@@ -207,20 +207,21 @@ scene.setBackgroundImage(img`
     `)
 tiles.setCurrentTilemap(tilemap`starfin`)
 mySprite = sprites.create(img`
-    2 2 2 . 1 1 1 . . . . . 
-    . 2 2 2 2 2 2 2 2 2 2 . 
-    c f f 2 2 2 2 2 f f 2 2 
-    c f f c c c c c f f c c 
-    c c c c c c c c c c c c 
     . . . . . . . . . . . . 
+    . . . . 2 2 2 . . . . . 
+    . . . 2 2 2 2 2 . . . . 
+    . c 4 4 2 2 2 4 4 c . . 
+    . c f f d d d f f c . . 
+    . c f f c c c f f c . . 
     `, SpriteKind.Player)
-controller.moveSprite(mySprite)
+tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
+controller.moveSprite(mySprite, 100, 100)
 scene.cameraFollowSprite(mySprite)
 let levels = [tileUtil.createSmallMap(tilemap`starfin`), 1]
 let CurrentLevel = 0
 PlaceObstacles(100, 100)
-forever(function () {
-    let level1: tiles.TileMapData = null
-    let tilemap2: tiles.TileMapData = null
-    tileUtil.connectMaps(tilemap2, level1, MapConnectionKind.Door1)
-})
+mySprite.startEffect(effects.fountain)
+if (controller.A.isPressed()) {
+    mySprite.x = 33
+    mySprite.y = 118
+}
