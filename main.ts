@@ -73,7 +73,7 @@ function PlaceObstacles (row: number, column: number) {
                 	
                 } else {
                     if (Math.percentChance(50)) {
-                        tiles.setTileAt(tiles.getTileLocation(index2, index), sprites.builtin.forestTiles0)
+                        tiles.setTileAt(tiles.getTileLocation(index2, index), assets.tile`myTileperson`)
                     } else {
                         tiles.setTileAt(tiles.getTileLocation(index2, index), assets.tile`obstacle-wall`)
                     }
@@ -214,11 +214,16 @@ mySprite = sprites.create(img`
     c c c c c c c c c c c c 
     . . . . . . . . . . . . 
     `, SpriteKind.Player)
-controller.moveSprite(mySprite)
+controller.moveSprite(mySprite, 100, 100)
 scene.cameraFollowSprite(mySprite)
 let levels = [tileUtil.createSmallMap(tilemap`starfin`), 1]
 let CurrentLevel = 0
 PlaceObstacles(100, 100)
+mySprite.startEffect(effects.fountain)
+if (controller.A.isPressed()) {
+    mySprite.x = 33
+    mySprite.y = 118
+}
 forever(function () {
     let level1: tiles.TileMapData = null
     let tilemap2: tiles.TileMapData = null
