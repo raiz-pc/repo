@@ -161,13 +161,6 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     false
     )
 })
-function change_Level (Level_Number: number) {
-    if (Level_Number == 1) {
-        tiles.setCurrentTilemap(tilemap`starfin`)
-    } else if (Level_Number == 2) {
-        tiles.setCurrentTilemap(tilemap`level2`)
-    }
-}
 function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
@@ -232,7 +225,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
-let CurrentLevel = 0
 scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -366,7 +358,7 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
 scaling.scaleToPercent(mySprite, 270, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-controller.moveSprite(mySprite, 100, 100)
+controller.moveSprite(mySprite, 150, 150)
 scene.cameraFollowSprite(mySprite)
 mySprite2 = sprites.create(img`
     .............fbf..............
@@ -386,7 +378,7 @@ mySprite2 = sprites.create(img`
     .fffffffffff88888fffffffffff..
     ..ffffff.fffff.ffffffffffff...
     `, SpriteKind.Player)
-controller.player2.moveSprite(mySprite2)
+controller.player2.moveSprite(mySprite2, 150, 150)
 tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
 splitScreen.setSplitScreenEnabled(true)
 splitScreen.setCameraRegion(splitScreen.Camera.Camera1, splitScreen.CameraRegion.VerticalLeftHalf)
