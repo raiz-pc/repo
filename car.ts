@@ -53,3 +53,6 @@ const Game_Gear__F1__F1_Cars = img`
 let mySprite20240122T043627798Z = sprites.create(assets.image`gojo`, SpriteKind.Player)
 let mySprite20240122T044153831Z = sprites.create(assets.image`ultra instinct`, SpriteKind.Player)
 // https://kristianpedersen.github.io/Convert-Image-to-MakeCode-Arcade-Sprite/
+let mySprite20240122T170955561Z = sprites.create(assets.image`car back`, SpriteKind.Player)
+let mySprite20240122T172027181Z = sprites.create(assets.image`car side`, SpriteKind.Player)
+let mySprite20240122T172116193Z = sprites.create(assets.image`car front`, SpriteKind.Player)

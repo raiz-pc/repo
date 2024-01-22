@@ -348,16 +348,9 @@ scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
     `)
 tiles.setCurrentTilemap(tilemap`starfin`)
-mySprite = sprites.create(img`
-    . . . . . . . . . . . . 
-    . . . f f f f f f f . . 
-    . . . . 2 2 2 2 2 . . . 
-    . . c 4 4 2 2 2 4 4 c . 
-    . . c f f d d d f f c . 
-    . . c f f c c c f f c . 
-    `, SpriteKind.Player)
+mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
 tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
-scaling.scaleToPercent(mySprite, 270, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
 controller.moveSprite(mySprite, 150, 150)
 scene.cameraFollowSprite(mySprite)
 mySprite2 = sprites.create(img`
