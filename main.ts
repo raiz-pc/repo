@@ -101,6 +101,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    MainGame()
+    PlaceObstacles(100, 100)
+})
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite2,
@@ -382,18 +386,26 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
     false
     )
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTileperson`, function (sprite, location) {
-	
-})
 function MainGame () {
-    mySprite20240122T043627798Z = sprites.create(assets.image`gojo`, SpriteKind.Player)
-    // https://kristianpedersen.github.io/Convert-Image-to-MakeCode-Arcade-Sprite/
-    mySprite20240122T170955561Z = sprites.create(assets.image`car back`, SpriteKind.Player)
-    mySprite20240122T172027181Z = sprites.create(assets.image`car side`, SpriteKind.Player)
-    mySprite20240122T172116193Z = sprites.create(assets.image`car front`, SpriteKind.Player)
     tiles.setCurrentTilemap(tilemap`starfin`)
+    importantiles = [
+    tiles.getTilesByType(assets.tile`myTile5`),
+    tiles.getTilesByType(assets.tile`startingline`),
+    tiles.getTilesByType(assets.tile`FINISHLIEN0`),
+    tiles.getTilesByType(assets.tile`border`),
+    tiles.getTilesByType(assets.tile`horizontalBoundary`),
+    tiles.getTilesByType(assets.tile`horizontalBoundaryUD`),
+    tiles.getTilesByType(assets.tile`l-tileUp`),
+    tiles.getTilesByType(assets.tile`horizontalBoundaryUD0`),
+    tiles.getTilesByType(assets.tile`horizontalBoundary0`),
+    tiles.getTilesByType(assets.tile`l-tileUpUD`),
+    tiles.getTilesByType(assets.tile`myTile4`),
+    tiles.getTilesByType(tileUtil.arrow15),
+    tiles.getTilesByType(tileUtil.arrow5),
+    tiles.getTilesByType(tileUtil.arrow3),
+    tiles.getTilesByType(tileUtil.arrow1)
+    ]
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
-    mySprite3 = sprites.create(assets.image`gojo`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     controller.moveSprite(mySprite, 150, 150)
     scene.cameraFollowSprite(mySprite)
@@ -418,17 +430,10 @@ function MainGame () {
     controller.player2.moveSprite(mySprite2, 150, 150)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
     splitScreen.setSplitScreenEnabled(true)
-    splitScreen.setCameraRegion(splitScreen.Camera.Camera1, splitScreen.CameraRegion.VerticalLeftHalf)
+    splitScreen.setCameraRegion(splitScreen.Camera.Camera2, splitScreen.CameraRegion.VerticalLeftHalf)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera1, mySprite2)
-    splitScreen.setCameraRegion(splitScreen.Camera.Camera2, splitScreen.CameraRegion.VerticalRightHalf)
+    splitScreen.setCameraRegion(splitScreen.Camera.Camera1, splitScreen.CameraRegion.VerticalRightHalf)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera2, mySprite)
-    PlaceObstacles(100, 100)
-    mySprite.startEffect(effects.none)
-    if (controller.A.isPressed()) {
-        mySprite.x = 33
-        mySprite.y = 118
-    }
-    sprite4 = sprites.create(assets.image`ultra instinct`, SpriteKind.Player)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -568,7 +573,7 @@ function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
             if (Math.percentChance(5)) {
-                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`FINISHLIEN0`) || tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`myTile4`) || tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`FINISHLIEN0`)) {
+                if (importantiles) {
                 	
                 } else {
                     if (Math.percentChance(50)) {
@@ -628,13 +633,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let textSprite: TextSprite = null
 let Intro = false
-let sprite4: Sprite = null
-let mySprite3: Sprite = null
-let mySprite20240122T172116193Z: Sprite = null
-let mySprite20240122T172027181Z: Sprite = null
-let mySprite20240122T170955561Z: Sprite = null
-let mySprite20240122T043627798Z: Sprite = null
+let importantiles: tiles.Location[][] = []
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 Intro1()
-MainGame()
