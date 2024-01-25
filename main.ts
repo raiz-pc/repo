@@ -567,7 +567,6 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
 function Intro1 () {
     Intro = true
     scene.setBackgroundImage(assets.image`IntroScreen`)
-    textSprite = textsprite.create("Rocket League", 15, 4)
 }
 function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
@@ -631,7 +630,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         )
     }
 })
-let textSprite: TextSprite = null
 let Intro = false
 let importantiles: tiles.Location[][] = []
 let mySprite2: Sprite = null
