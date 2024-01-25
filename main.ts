@@ -572,7 +572,7 @@ function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
             if (Math.percentChance(5)) {
-                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`FINISHLIEN0`) || tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`myTile4`)) {
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
                     if (Math.percentChance(50)) {
                         tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`myTileperson`)
                     } else {
