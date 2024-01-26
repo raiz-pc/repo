@@ -136,6 +136,12 @@ controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pr
     false
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
+    controller.moveSprite(sprite, 200, 200)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`road`, function (sprite, location) {
+    controller.moveSprite(sprite, 300, 300)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
@@ -392,6 +398,9 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
     false
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`fakeroad`, function (sprite, location) {
+    controller.moveSprite(sprite, 300, 300)
+})
 function MainGame () {
     tiles.setCurrentTilemap(tilemap`starfin`)
     importantiles = [
@@ -413,7 +422,7 @@ function MainGame () {
     ]
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    controller.moveSprite(mySprite, 200, 200)
+    controller.moveSprite(mySprite, 300, 300)
     scene.cameraFollowSprite(mySprite)
     mySprite2 = sprites.create(img`
         .............fbf..............
@@ -573,8 +582,14 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
 scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sprite, location) {
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`ground`, function (sprite, location) {
+    controller.moveSprite(sprite, 50, 50)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`obstacle-wall`, function (sprite, location) {
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
+    mySprite.startEffect(effects.ashes, 500)
+    mySprite.startEffect(effects.fire, 500)
+    mySprite.startEffect(effects.rings, 500)
 })
 function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
