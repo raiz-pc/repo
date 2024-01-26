@@ -102,8 +102,9 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Intro = false
     MainGame()
-    PlaceObstacles(100, 100)
+    PlaceObstacles(255, 100)
 })
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -407,7 +408,7 @@ function MainGame () {
     ]
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    controller.moveSprite(mySprite, 150, 150)
+    controller.moveSprite(mySprite, 200, 200)
     scene.cameraFollowSprite(mySprite)
     mySprite2 = sprites.create(img`
         .............fbf..............
@@ -571,15 +572,13 @@ function Intro1 () {
 function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
-            if (Math.percentChance(5)) {
+            if (Math.percentChance(10)) {
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
                     if (Math.percentChance(50)) {
                         tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`myTileperson`)
                     } else {
                         tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`obstacle-wall`)
                     }
-                } else if (importantiles) {
-                	
                 }
             }
         }
@@ -630,8 +629,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         )
     }
 })
-let Intro = false
 let importantiles: tiles.Location[][] = []
 let mySprite2: Sprite = null
+let Intro = false
 let mySprite: Sprite = null
+namespace userconfig {
+    export const ARCADE_SCREEN_WIDTH = 320
+    export const ARCADE_SCREEN_HEIGHT = 240
+}
 Intro1()
