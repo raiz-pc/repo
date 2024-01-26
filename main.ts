@@ -1,3 +1,7 @@
+namespace SpriteKind {
+    export const player2 = SpriteKind.create()
+    export const home = SpriteKind.create()
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
@@ -102,9 +106,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.home)
     Intro = false
     MainGame()
-    PlaceObstacles(255, 100)
+    PlaceObstacles(255, 255)
 })
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -427,7 +432,7 @@ function MainGame () {
         .fffffffff88fffff88fffffffff..
         .fffffffffff88888fffffffffff..
         ..ffffff.fffff.ffffffffffff...
-        `, SpriteKind.Player)
+        `, SpriteKind.player2)
     controller.player2.moveSprite(mySprite2, 150, 150)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
     splitScreen.setSplitScreenEnabled(true)
@@ -565,14 +570,16 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     false
     )
 })
-function Intro1 () {
-    Intro = true
-    scene.setBackgroundImage(assets.image`IntroScreen`)
-}
+scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sprite, location) {
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`obstacle-wall`, function (sprite, location) {
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
+})
 function PlaceObstacles (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
-            if (Math.percentChance(10)) {
+            if (Math.percentChance(5)) {
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
                     if (Math.percentChance(50)) {
                         tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`myTileperson`)
@@ -633,8 +640,8 @@ let importantiles: tiles.Location[][] = []
 let mySprite2: Sprite = null
 let Intro = false
 let mySprite: Sprite = null
+let HomeScreen = sprites.create(assets.image`Homescreen`, SpriteKind.home)
 namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
-Intro1()
