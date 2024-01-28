@@ -403,23 +403,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`fakeroad`, function (sprite, 
 })
 function MainGame () {
     tiles.setCurrentTilemap(tilemap`starfin`)
-    importantiles = [
-    tiles.getTilesByType(assets.tile`myTile5`),
-    tiles.getTilesByType(assets.tile`startingline`),
-    tiles.getTilesByType(assets.tile`FINISHLIEN0`),
-    tiles.getTilesByType(assets.tile`border`),
-    tiles.getTilesByType(assets.tile`horizontalBoundary`),
-    tiles.getTilesByType(assets.tile`horizontalBoundaryUD`),
-    tiles.getTilesByType(assets.tile`l-tileUp`),
-    tiles.getTilesByType(assets.tile`horizontalBoundaryUD0`),
-    tiles.getTilesByType(assets.tile`horizontalBoundary0`),
-    tiles.getTilesByType(assets.tile`l-tileUpUD`),
-    tiles.getTilesByType(assets.tile`myTile4`),
-    tiles.getTilesByType(tileUtil.arrow15),
-    tiles.getTilesByType(tileUtil.arrow5),
-    tiles.getTilesByType(tileUtil.arrow3),
-    tiles.getTilesByType(tileUtil.arrow1)
-    ]
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     controller.moveSprite(mySprite, 300, 300)
@@ -450,6 +433,9 @@ function MainGame () {
     splitScreen.setCameraRegion(splitScreen.Camera.Camera1, splitScreen.CameraRegion.VerticalRightHalf)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera2, mySprite)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
+}
+function slow () {
+	
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -651,7 +637,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
         )
     }
 })
-let importantiles: tiles.Location[][] = []
 let mySprite2: Sprite = null
 let Intro = false
 let mySprite: Sprite = null

@@ -3,25 +3,6 @@ namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "image1":
-            case "field":return img`
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-`;
             case "image2":
             case "forestMonkey8":return img`
 . . . . . f f f f f . . . . . . 
@@ -1305,6 +1286,25 @@ bbbbbbbbbbbbbbbbbbbbbbbbbbffffffffff666666666cfeeebfffcccccccc888888ccc8cccf668f
 ................................................................................................................................................................................................................................................................................................................................
 ................................................................................................................................................................................................................................................................................................................................
 `;
+            case "image1":
+            case "field":return img`
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+`;
             case "image10":
             case "Homescreen":return img`
 c777ccccc777777777777777777777c777777777777ccccaaaaaaaaaaaaaaaaaaaaaaeebecaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaceeeeeecaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaebbeeeecaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaeeeeeeeeeeec1111119999991111111111111111111111
@@ -1364,10 +1364,10 @@ dddddddddddddddddddddddddddddddddddddddddddd1dcd1ddddddddddddddddddddddddddddddd
 dddddddddddddddddddddddddddddddddddddddddddd1dcd1ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd111ddddddddddddddddddddddd11eb1dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbb1dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbceeeeeeeeeeccc77cc77777777777777777999befb9999
 dddbdddddddbdb3ddddbbbdddddddbdddddddbbbbbdddbcbddddbbbbbbbbbbbbbdbdddd1111111111dddd3bbdd11d33dddddddbbddddd11111ddbbdbbbdddddddbdd11111111dbbbbbbbbbbbdddddd1111ddddddddbddddddd1111111111dbbbbbbbbbbdbbbbbbddddbbbbbbbbd11111dbbdbbbbbdddddbdddddddd11111dbbbbbbbbbdddbbbbbbbcceeeeeeeeeeccc777777777777777777777999bbbb9999
 eeeeecceeeeeeeeeeecceeeeeeeeeeeeeeeeeeeeeeeccceccccccccceeeceeeeeebd11111111111111bccccc11111bcceeccccccd111111111bceeeeecccccced111111111111deeeeeeeccccccccd11111ecccceecceeeb1111111111111deeeeeeeeeeeebbdbbecccccccccb1111111bcccccccccccccbd1111d1111111decceceeeeeeccccccceeeeeeeeeeeeeecc777777777777777777777777bdbb999
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbd111111111111111111bbbb1111111bbbbbbbbbd1111111111dbbbbbbbbbbbd111111111111111dbbbbbbbbbbbbbb1111113bbbbbbbbbd11111111111111111bbbbbbbbbd1111111bbbbbbbbd111111111bbbbbbbbbbbd11111111111111111bbbbbbbbbbbbbbbbbeeeeeeeeeeeeeeefc77777777c77777777777777ddcb999
-1dd11111111111111111111111111111111111111111111111111111111111111111111111111111111dd1111111111d111111111111111111d3dddddddd1111111111111111111ddddd1ddddd111111111dd111111111111111111111111111ddddd111111111111d11dd111111111111dd11111111111111111111111111111111111111111111beeeeeeeeeeeeeecc777777ccc77777777777777dbc9999
-ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd11111111111111111111111d3dd111111111ddddddd111111111111d3ddddddd111111111111111111111ddddddddd1111111111ddddddd1111111111111111111111dddddd111111111113dddd11111111111133dddddd1111111111111111111111dd11ddddd1d1dd11beeeeeeeeeeeeeeec777777ccc777777777777777c99999
-ccccccccccccccccccccccccccccccccccccccccccccccecccccccccccd1111111111111111111111baaad11111111dacccccc111111111111aaacccccb111111111111111111111bcccccccd111111111daaccccd1111111111111111111111dacccb1111111111babccd11111111111daacccccb11111111111111111111113bcccccccccccccceeeeeeeeeeeeeeec777777cccc7777777777777ecb99999
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbd111111111111111111bbbb1111111bbbbbbbbbd1111111111dbbbbbbbbbbbd111111111111111dbbbbbbbbbbbbbb111111abbbbbbbbbd11111111111111111bbbbbbbbbd1111111bbbbbbbbd111111111bbbbbbbbbbbd11111111111111111bbbbbbbbbbbbbbbbbeeeeeeeeeeeeeeefc77777777c77777777777777ddcb999
+1dd11111111111111111111111111111111111111111111111111111111111111111111111111111111dd1111111111d111111111111111111dadddddddd1111111111111111111ddddd1ddddd111111111dd111111111111111111111111111ddddd111111111111d11dd111111111111dd11111111111111111111111111111111111111111111beeeeeeeeeeeeeecc777777ccc77777777777777dbc9999
+ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd11111111111111111111111dadd111111111ddddddd111111111111daddddddd111111111111111111111ddddddddd1111111111ddddddd1111111111111111111111dddddd111111111113dddd111111111111aadddddd1111111111111111111111dd11ddddd1d1dd11beeeeeeeeeeeeeeec777777ccc777777777777777c99999
+ccccccccccccccccccccccccccccccccccccccccccccccecccccccccccd1111111111111111111111baaad11111111dacccccc111111111111aaacccccb111111111111111111111bcccccccd111111111daaccccd1111111111111111111111dacccb1111111111babccd11111111111daacccccb1111111111111111111111abcccccccccccccceeeeeeeeeeeeeeec777777cccc7777777777777ecb99999
 cccccccccccccccccccccccccccccccccccccccccccccccccccccccccd11111111111111111111111cccb111111111bccccccb11111111111dccccccccd111111111111111111111bccccccb1111111111bcccccd11111111111111111111111bcccc11111111111ccccb111111111111dccccccc11111111111111111111111dcccccccccccccccceeeeeeeeeeeeeec77777cccccccc77c777777ecb999999
 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccb11111111111111111111111dcccd111111111acccccc111111111111bcccccccb1111111111111111111111bacccccd1111111111accccb11111111111111111111111bccccd11111111111bccb1111111111111bccccccd111111111111111111111111accccccccccccccceeeeeeeeeeeeeebe7777cccc7777ccc777777c99999999
 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccd11111111111111111111111bccc111111111dccccccb111111111111bccccccc11111111111dad111111111baccccb1111111111dccccc1111111111111111111111dcccccc111111111111bccd1111111111111bcccccb1111111111111111111111111bccccccccccccccceeeeeeeeeeeeeeee7777c7777777ccc777777c99999999
@@ -1399,7 +1399,7 @@ cccccccccccccccccccccccccccccccccccccccccccbcccccccccccc1111111111dcccccccccccb1
 bccccccccccccccccccccccccccccccccccccccccccccce77777777d1111111111bbb777777777b111111111111111111111111111ddd1111111111111ddd111111111111d111111111111111cccccb1111111111111111111111111ddd111111111111ccccecccabb1111111111aaccd111111111dabbb11111111111daaabcc77777777777999999997e77ecccceeeccccccccccc777777777777777777bb
 7ccccccccccccccccccccccccccccccccccccccccccccce77e7777ed111111111dbbbe7777eeeec111111111111111111111111111dd11111111111111ddd1111111111111d1111111111111dcccfcb111111111111111111111111dddd111111111111bbcccceccbd111111111daaccc1111111111abbd1111111111daaabcc777777b7779999999999777c777cccecccccccccccc777777777777777777bb
 7ccb77ccccccccccccccccccccccccccccccccccccccccecccccccc1111111111bccceeeeeeccbb11111111111111111111111111ddd1111111111111dddd1111111111111d1111111111111dbbdbd111111111111111111111111ddddd11111111111ddddbcccccbd111111111baaccc1111111111dbd11111111111baaccc7777777b7777977b99997999bbbbb77cccccccccccc777777777777777777777
-7c7777ccccccccccccccccccccccccccccccccccccccccecccccccc111111111dccccccccfcbd1111111111111111111111111111bdd1111111111111ddd11111111111111ddd11111111111bcccccb1111111111111111111111dcccce111111111113dd11dcfcccd111111111aaacccc1111111111111111111111baabc777777777bb77779779999997777bbb99ccccccccccc7777777777777777777777
+7c7777ccccccccccccccccccccccccccccccccccccccccecccccccc111111111dccccccccfcbd1111111111111111111111111111bdd1111111111111ddd11111111111111ddd11111111111bcccccb1111111111111111111111dcccce11111111111add11dcfcccd111111111aaacccc1111111111111111111111baabc777777777bb77779779999997777bbb99ccccccccccc7777777777777777777777
 7777b7ccccccccccccccccccccccccccccccccccccccccccccccccb111111111bccccffcbdd111111111111111111111111111111cbd1111111111111ddddddd1111111111dcd1111111111dcccccccd11111111111111111111bcccccc1111111111bccb1111bcfcd11111111daacccccd11111111111111111111baaac7777777797b97777777799977777bbb999977ccccccccc777777777777777777777
 7777b7cccccccccccccccccccccccccccccccccccccccccccccccbd111111111bbdddeed11111111111111111111111d11111111dccd111111111111dbbcccccb1111111119cd1111111111bcccccccc1111111111111111111baaa9cc9111111111dccccbd111dcfd11111111baaccccccd111111111111111111baabcc7777777777797777777777997777b99777977cccccccec777777777777777777777
 7777b7cccccccccccccbbbbdbbbeccbbbbdddddddddddd11111111111111111ddddbeb111111ddbbeeed1111111111dd1111111ddbcd111111111111bccffccccc999d111d9c9111111111bcbbccccccbd111111111111111daaaa99999111111111ba99cfcd1111bc1111111baaacccccccd111111111111111dbaaacc777777777977d9777777777777777777779977eeccccccc777777777777777777777
