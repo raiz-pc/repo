@@ -379,9 +379,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 function powers (row: number, column: number) {
     for (let index2 = 0; index2 <= column; index2++) {
         for (let index3 = 0; index3 <= row; index3++) {
-            if (Math.percentChance(5)) {
+            if (Math.percentChance(80)) {
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
-                	
+                    ORBS()
                 }
             }
         }
@@ -573,6 +573,12 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     false
     )
 })
+function ORBS () {
+    let enemies: Sprite[] = []
+    Rdpowers = powers2[Math.floor(Math.random() * powers2.length)]
+    orbs = sprites.create(Rdpowers, SpriteKind.Enemy)
+    enemies.push(orbs)
+}
 scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sprite, location) {
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(39, 113))
     mySprite2.startEffect(effects.ashes, 500)
@@ -595,26 +601,27 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`obstacle-wall`, function (spr
     mySprite.startEffect(effects.rings, 500)
 })
 function PlaceObstacles (row: number, column: number) {
-    for (let index2 = 0; index2 <= column; index2++) {
-        for (let index3 = 0; index3 <= row; index3++) {
-            if (Math.percentChance(5)) {
-                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
+    for (let index22 = 0; index22 <= column; index22++) {
+        for (let index32 = 0; index32 <= row; index32++) {
+            if (Math.percentChance(4)) {
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index22, index32), assets.tile`road`)) {
                     if (Math.percentChance(50)) {
-                        tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`myTileperson`)
-                    } else {
-                        tiles.setTileAt(tiles.getTileLocation(index2, index3), assets.tile`obstacle-wall`)
+                        tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`obstacle-wall`)
                     }
                 }
             }
         }
     }
 }
+let orbs: Sprite = null
+let Rdpowers: Image = null
 let Intro = false
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
+let powers2: Image[] = []
 let HomeScreen = sprites.create(assets.image`Homescreen`, SpriteKind.home)
 namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
-let list = [sprites.dungeon.collectibleRedCrystal, sprites.dungeon.collectibleBlueCrystal]
+powers2 = [sprites.dungeon.collectibleRedCrystal, sprites.dungeon.collectibleBlueCrystal]
