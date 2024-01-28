@@ -105,6 +105,9 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+scene.onOverlapTile(SpriteKind.player2, assets.tile`myTile4`, function (sprite, location) {
+    controller.player2.moveSprite(mySprite2, 150, 150)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     sprites.destroyAllSpritesOfKind(SpriteKind.home)
     Intro = false
@@ -137,10 +140,10 @@ controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pr
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
-    controller.moveSprite(sprite, 200, 200)
+    controller.moveSprite(sprite, 150, 150)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`road`, function (sprite, location) {
-    controller.moveSprite(sprite, 300, 300)
+    controller.moveSprite(sprite, 250, 250)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -373,6 +376,17 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     false
     )
 })
+function powers (row: number, column: number) {
+    for (let index2 = 0; index2 <= column; index2++) {
+        for (let index3 = 0; index3 <= row; index3++) {
+            if (Math.percentChance(5)) {
+                if (tiles.tileAtLocationEquals(tiles.getTileLocation(index2, index3), assets.tile`road`)) {
+                	
+                }
+            }
+        }
+    }
+}
 controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite2,
@@ -398,14 +412,11 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
     false
     )
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`fakeroad`, function (sprite, location) {
-    controller.moveSprite(sprite, 300, 300)
-})
 function MainGame () {
     tiles.setCurrentTilemap(tilemap`starfin`)
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-    controller.moveSprite(mySprite, 300, 300)
+    controller.moveSprite(mySprite, 250, 250)
     scene.cameraFollowSprite(mySprite)
     mySprite2 = sprites.create(img`
         .............fbf..............
@@ -425,7 +436,7 @@ function MainGame () {
         .fffffffffff88888fffffffffff..
         ..ffffff.fffff.ffffffffffff...
         `, SpriteKind.player2)
-    controller.player2.moveSprite(mySprite2, 150, 150)
+    controller.player2.moveSprite(mySprite2, 250, 250)
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
     splitScreen.setSplitScreenEnabled(true)
     splitScreen.setCameraRegion(splitScreen.Camera.Camera2, splitScreen.CameraRegion.VerticalLeftHalf)
@@ -433,9 +444,6 @@ function MainGame () {
     splitScreen.setCameraRegion(splitScreen.Camera.Camera1, splitScreen.CameraRegion.VerticalRightHalf)
     splitScreen.cameraFollowSprite(splitScreen.Camera.Camera2, mySprite)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
-}
-function slow () {
-	
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -566,10 +574,19 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     )
 })
 scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sprite, location) {
-    tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(39, 113))
+    mySprite2.startEffect(effects.ashes, 500)
+    mySprite2.startEffect(effects.fire, 500)
+    mySprite2.startEffect(effects.rings, 500)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`ground`, function (sprite, location) {
     controller.moveSprite(sprite, 50, 50)
+})
+scene.onOverlapTile(SpriteKind.player2, assets.tile`ground`, function (sprite, location) {
+    controller.player2.moveSprite(mySprite2, 250, 250)
+})
+scene.onOverlapTile(SpriteKind.player2, assets.tile`road`, function (sprite, location) {
+    controller.player2.moveSprite(mySprite2, 250, 250)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`obstacle-wall`, function (sprite, location) {
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
@@ -592,56 +609,12 @@ function PlaceObstacles (row: number, column: number) {
         }
     }
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    for (let index = 0; index < 1; index++) {
-        animation.runImageAnimation(
-        mySprite,
-        [img`
-            . . . . . . . . . . . . 
-            . . . . . 4 4 . . . . 1 
-            . . . . 4 5 5 4 . . . . 
-            . . . . 2 5 5 2 . . . . 
-            . . . . . 2 2 . . . . . 
-            . . . . . . . . . . . . 
-            `,img`
-            . . . 2 . . . 4 4 . . . 
-            . . . 2 4 . 4 5 4 . . . 
-            . . . . 2 4 5 5 4 . . . 
-            . . . . 2 5 5 5 4 . . . 
-            . . . . . 2 5 5 5 4 . . 
-            . . . . . 2 4 2 4 4 . . 
-            `,img`
-            . . . 4 5 4 4 4 d 4 . . 
-            . . . 3 d d d 5 5 4 . . 
-            . . 4 4 5 1 5 5 5 5 . . 
-            . . . 4 3 5 d 5 5 d . . 
-            . . 4 5 5 3 d 3 d 5 . . 
-            . . 4 4 d 4 d 4 3 d . . 
-            `,img`
-            . . b 3 1 d 1 d b . . . 
-            . b 1 1 . . . b d b . . 
-            . b 1 3 . . . . b 1 . . 
-            . b 1 b . . . b d d . . 
-            . b d d b d b d d b . . 
-            . . b b d d b b b . . . 
-            `,img`
-            . . . . . . . . . . . . 
-            . . f f f f f f f . . . 
-            . . . 2 2 2 2 2 . . . . 
-            . c 4 4 2 2 2 4 4 c . . 
-            . c f f 1 1 1 f f c . . 
-            . c f f c c c f f c . . 
-            `],
-        100,
-        false
-        )
-    }
-})
-let mySprite2: Sprite = null
 let Intro = false
+let mySprite2: Sprite = null
 let mySprite: Sprite = null
 let HomeScreen = sprites.create(assets.image`Homescreen`, SpriteKind.home)
 namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
+let list = [sprites.dungeon.collectibleRedCrystal, sprites.dungeon.collectibleBlueCrystal]
