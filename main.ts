@@ -112,6 +112,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     sprites.destroyAllSpritesOfKind(SpriteKind.home)
     Intro = false
     randMap()
+    tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
 })
 controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -405,8 +407,6 @@ function randMap () {
     MainGame()
 }
 function MainGame () {
-    tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
-    tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
     controller.moveSprite(mySprite, 250, 250)
@@ -610,4 +610,4 @@ namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
-listofMap = [tilemap`starfin`, tilemap`moistyMire`, tilemap`bot`]
+listofMap = [tilemap`starfin`, tilemap`moistyMire`]
