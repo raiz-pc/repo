@@ -406,6 +406,9 @@ function randMap () {
     tiles.setCurrentTilemap(listofMap._pickRandom())
     MainGame()
 }
+scene.onOverlapTile(SpriteKind.player2, assets.tile`OILSPILL`, function (sprite, location) {
+    controller.player2.moveSprite(mySprite2, 5000, 5000)
+})
 function MainGame () {
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
@@ -565,6 +568,10 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     false
     )
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`FINISHLIEN0`, function (sprite, location) {
+    game.splash("RED CAR WINS")
+    game.gameOver(true)
+})
 scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sprite, location) {
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(39, 113))
     mySprite2.startEffect(effects.ashes, 500)
@@ -574,8 +581,12 @@ scene.onOverlapTile(SpriteKind.player2, assets.tile`obstacle-wall`, function (sp
 scene.onOverlapTile(SpriteKind.Player, assets.tile`ground`, function (sprite, location) {
     controller.moveSprite(sprite, 50, 50)
 })
+scene.onOverlapTile(SpriteKind.player2, assets.tile`FINISHLIEN0`, function (sprite, location) {
+    game.splash("BLUE CAR WINS")
+    game.gameOver(true)
+})
 scene.onOverlapTile(SpriteKind.player2, assets.tile`ground`, function (sprite, location) {
-    controller.player2.moveSprite(mySprite2, 250, 250)
+    controller.player2.moveSprite(mySprite2, 50, 50)
 })
 scene.onOverlapTile(SpriteKind.player2, assets.tile`road`, function (sprite, location) {
     controller.player2.moveSprite(mySprite2, 250, 250)
@@ -594,13 +605,16 @@ function PlaceObstacles (row: number, column: number) {
                     if (Math.percentChance(50)) {
                         tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`obstacle-wall`)
                     } else {
-                        tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`myTileperson`)
+                        tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`OILSPILL`)
                     }
                 }
             }
         }
     }
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`OILSPILL`, function (sprite, location) {
+    controller.player1.moveSprite(mySprite, 5000, 5000)
+})
 let Intro = false
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
