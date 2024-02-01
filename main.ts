@@ -610,4 +610,4 @@ namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
-listofMap = [tilemap`starfin`, tilemap`moistyMire`, tilemap`bot`]
+listofMap = [tilemap`starfin`, tilemap`moistyMire`, tilemap`moistyMire`]
