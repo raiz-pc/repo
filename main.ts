@@ -111,6 +111,7 @@ scene.onOverlapTile(SpriteKind.player2, assets.tile`myTile4`, function (sprite, 
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     sprites.destroyAllSpritesOfKind(SpriteKind.home)
     Intro = false
+    // calls the Randmap function that choses a random map
     randMap()
     tiles.placeOnTile(mySprite2, tiles.getTileLocation(33, 115))
     tiles.placeOnTile(mySprite, tiles.getTileLocation(39, 113))
@@ -248,6 +249,9 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     100,
     false
     )
+})
+scene.onOverlapTile(SpriteKind.player2, assets.tile`myTileperson`, function (sprite, location) {
+    controller.player2.moveSprite(mySprite2, 5000, 5000)
 })
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -402,13 +406,15 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
     false
     )
 })
+// picks a random value from the list of tilemaps
 function randMap () {
     tiles.setCurrentTilemap(listofMap._pickRandom())
     MainGame()
 }
-scene.onOverlapTile(SpriteKind.player2, assets.tile`OILSPILL`, function (sprite, location) {
-    controller.player2.moveSprite(mySprite2, 5000, 5000)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTileperson`, function (sprite, location) {
+    controller.player1.moveSprite(mySprite, 5000, 5000)
 })
+// all the code with the information of the players
 function MainGame () {
     mySprite = sprites.create(assets.image`car back`, SpriteKind.Player)
     scaling.scaleToPercent(mySprite, 20, ScaleDirection.Uniformly, ScaleAnchor.Middle)
@@ -597,31 +603,36 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`obstacle-wall`, function (spr
     mySprite.startEffect(effects.fire, 500)
     mySprite.startEffect(effects.rings, 500)
 })
+// places obstacles around the map
 function PlaceObstacles (row: number, column: number) {
+    // parameters so the loop is not infinite
     for (let index22 = 0; index22 <= column; index22++) {
+        // parameters so the loop is not infinite
         for (let index32 = 0; index32 <= row; index32++) {
+            // 4% chance of a block spawning in a pixel
             if (Math.percentChance(4)) {
+                // obstacle only spawns if theirs a grey tile
                 if (tiles.tileAtLocationEquals(tiles.getTileLocation(index22, index32), assets.tile`road`)) {
+                    // 50% chance of it being a block tile or a oil spill tile
                     if (Math.percentChance(50)) {
                         tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`obstacle-wall`)
                     } else {
-                        tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`OILSPILL`)
+                        tiles.setTileAt(tiles.getTileLocation(index22, index32), assets.tile`myTileperson`)
                     }
                 }
             }
         }
     }
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`OILSPILL`, function (sprite, location) {
-    controller.player1.moveSprite(mySprite, 5000, 5000)
-})
 let Intro = false
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 let listofMap: tiles.TileMapData[] = []
+// Main screen that it showed when the game fist starts.
 let HomeScreen = sprites.create(assets.image`Homescreen`, SpriteKind.home)
 namespace userconfig {
     export const ARCADE_SCREEN_WIDTH = 320
     export const ARCADE_SCREEN_HEIGHT = 240
 }
+// list of all the tilemaps that can be chosen from
 listofMap = [tilemap`starfin`, tilemap`moistyMire0`, tilemap`moistyMire`]
